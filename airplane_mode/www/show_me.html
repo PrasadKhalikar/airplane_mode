@@ -1,27 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Show Me Colors</title>
-  <style>
-    .rectangle {
-      width: 200px;
-      height: 100px;
-      margin: 50px auto;
-      border: 2px solid #333;
-    }
-  </style>
+    <title>Show Me Color</title>
+    <style>
+        .rectangle {
+            width: 400px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+    </style>
 </head>
 <body>
-  <div id="rectangle" class="rectangle"></div>
-
-  <script>
-    // Get query parameters
-    const params = new URLSearchParams(window.location.search);
-    // Read `color` parameter, fallback to black
-    const color = params.get("color") || "black";
-
-    // Apply color to rectangle
-    document.getElementById("rectangle").style.backgroundColor = color;
-  </script>
+    <div class="rectangle" style="background-color: {{ frappe.form_dict.color or 'black' }};"></div>
 </body>
 </html>
