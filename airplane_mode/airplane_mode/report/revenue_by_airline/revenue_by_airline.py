@@ -47,12 +47,25 @@ def execute(filters=None):
             "airline": airline.name,
             "revenue": revenue
         })
+	data.append(["Total Revenue", total_revenue])
+	labels = [row[0] for row in data]  # Airline names
+	values = [row[1] for row in data]  # Revenue values
 
-    # Add total row
-    #data.append({
-    #    "airline": _("Total"),
-    #    "revenue": total_revenue
-    #})
+	chart = {
+		"data": {
+			"labels": labels,
+			"datasets": [
+				{
+					"name": "Revenue",
+					"values": values
+				}
+			]
+		},
+		"type": "donut"
+	}
+    summary = [
+		{'label': 'Total Revenue', 'value': frappe.format_value(total_revenue, 'Currency')}
+	]
 
-    return columns, data
+    return columns, data, None, chart, summary
 
