@@ -7,6 +7,7 @@
 
 import frappe
 from frappe.website.website_generator import WebsiteGenerator
+from frappe.utils.background_jobs import enqueue
 
 class AirplaneFlight(WebsiteGenerator):
     def on_submit(self):
@@ -22,8 +23,20 @@ class AirplaneFlight(WebsiteGenerator):
             self.db_set("route", f"airplane-flight/{self.name}")
     
     def before_save(self):
+        """Generate route if missing and trigger ticket updates if gate changes"""
+        # --- Keep existing route logic ---
         if not self.route and self.name and not self.name.startswith("new-"):
             self.route = f"airplane-flight/{self.name}"
+
+        # --- New: detect gate change ---
+        old_doc = self.get_doc_before_save()
+        if old_doc and old_doc.gate != self.gate:
+            # Enqueue background job to update all tickets linked to this flight
+            enqueue(
+                "airplane_mode.airplane_mode.doctype.airplane_flight.airplane_flight.update_ticket_gates",
+                flight_name=self.name,
+                new_gate=self.gate
+            )
     
     def get_context(self, context):
         """Add additional context for web view"""
@@ -42,3 +55,23 @@ class AirplaneFlight(WebsiteGenerator):
             context.formatted_date = frappe.utils.format_date(self.date_of_departure, "d MMMM, YYYY")
         
         return context
+
+
+# ----------------------------
+# Background job function
+# ----------------------------
+def update_ticket_gates(flight_name, new_gate):
+    """
+    Background job to update all tickets linked to a flight
+    when the flight's gate changes.
+    """
+    tickets = frappe.get_all(
+        "Airplane Ticket",
+        filters={"flight": flight_name},
+        fields=["name"]
+    )
+    
+    for ticket in tickets:
+        frappe.db.set_value("Airplane Ticket", ticket.name, "gate", new_gate)
+    
+    frappe.db.commit()

@@ -5,7 +5,13 @@ app_description = "airplane"
 app_email = "khalikarprasad@gmail.com"
 app_license = "mit"
 
-# Apps
+
+scheduler_events = {
+    "monthly": [
+        "airport_shop.tasks.send_rent_reminders"
+    ]
+}
+
 # ------------------
 
 # required_apps = []
