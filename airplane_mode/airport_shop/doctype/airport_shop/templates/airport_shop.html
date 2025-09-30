@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <h2>{{title}}</h2>
+  <link rel="stylesheet" href="/assets/airplane_mode/css/picnic.css">
+</head>
+<body>
+  <article class="card">
+    <header>
+      <h1>{{ doc.shop_name }}</h1>
+    </header>
+    <section>
+      <p><b>Shop Number:</b> {{ doc.shop_no }}</p>
+      <p><b>Area:</b> {{ doc.area }} sq.ft</p>
+      <p><b>Status:</b> {{ doc.status }}</p>
+    </section>
+    <footer>
+      <a class="button success" href="/shop-lead/new?shop={{ title }}">
+        Interested? Apply Now
+      </a>
+    </footer>
+  </article>
+</body>
+</html>
