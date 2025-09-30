@@ -1,0 +1,117 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:contract_no",
+ "creation": "2025-09-29 10:26:57.751289",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "contract_no",
+  "shop",
+  "tenant",
+  "column_break_zqcc",
+  "start_date",
+  "end_date",
+  "status",
+  "section_break_ugjw",
+  "rent_amount",
+  "column_break_prbz",
+  "security_deposit"
+ ],
+ "fields": [
+  {
+   "fieldname": "contract_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Contract No.",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "shop",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Shop",
+   "options": "Airport Shop",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Tenant",
+   "options": "Shop Tenant",
+   "reqd": 1
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rent_amount",
+   "fieldtype": "Currency",
+   "label": "Rent Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "security_deposit",
+   "fieldtype": "Currency",
+   "label": "Security Deposit"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nExpired\nTerminated"
+  },
+  {
+   "fieldname": "column_break_zqcc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ugjw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_prbz",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-29 11:22:35.051968",
+ "modified_by": "Administrator",
+ "module": "Airport Shop",
+ "name": "Shop Lease Contract",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

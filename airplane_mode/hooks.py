@@ -5,7 +5,16 @@ app_description = "airplane"
 app_email = "khalikarprasad@gmail.com"
 app_license = "mit"
 
-# Apps
+
+scheduler_events = {
+    "monthly": [
+        "airplane_mode.tasks.send_rent_reminders"
+    ]
+}
+fixtures = [
+    {"dt": "Shop Type"}
+]
+
 # ------------------
 
 # required_apps = []
@@ -137,13 +146,11 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Airplane Flight": {
+		"on_update": "airplane_mode.airplane_mode.doctype.airplane_flight.airplane_flight.update_ticket_gates"
+	}
+}
 
 # Scheduled Tasks
 # ---------------

@@ -1,0 +1,132 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:payment_id",
+ "creation": "2025-09-29 10:46:09.956850",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "payment_id",
+  "shop_lease",
+  "shop",
+  "tenant",
+  "column_break_yfav",
+  "payment_date",
+  "period_start",
+  "period_end",
+  "section_break_ayeb",
+  "rent_amount",
+  "mode_of_payment",
+  "column_break_iqnk",
+  "amount_paid",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "payment_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Payment ID",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "shop_lease",
+   "fieldtype": "Link",
+   "label": "Shop Lease",
+   "options": "Shop Lease Contract"
+  },
+  {
+   "fetch_from": "shop_lease.shop",
+   "fieldname": "shop",
+   "fieldtype": "Data",
+   "label": "Shop"
+  },
+  {
+   "fetch_from": "shop_lease.tenant",
+   "fieldname": "tenant",
+   "fieldtype": "Data",
+   "label": "Tenant"
+  },
+  {
+   "fieldname": "column_break_yfav",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "label": "Payment Date"
+  },
+  {
+   "fieldname": "period_start",
+   "fieldtype": "Date",
+   "label": "Period Start"
+  },
+  {
+   "fieldname": "period_end",
+   "fieldtype": "Date",
+   "label": "Period End"
+  },
+  {
+   "fieldname": "section_break_ayeb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "Cash",
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Select",
+   "label": "Mode Of Payment",
+   "options": "UPI\nBank Transfer\nCash"
+  },
+  {
+   "fieldname": "column_break_iqnk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount_paid",
+   "fieldtype": "Currency",
+   "label": "Amount Paid",
+   "reqd": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fetch_from": "shop_lease.rent_amount",
+   "fieldname": "rent_amount",
+   "fieldtype": "Currency",
+   "label": "Rent Amount",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-29 11:18:43.580227",
+ "modified_by": "Administrator",
+ "module": "Airport Shop",
+ "name": "Shop Rent Payment",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
