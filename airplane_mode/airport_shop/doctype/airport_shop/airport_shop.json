@@ -11,12 +11,13 @@
   "status",
   "current_contract",
   "rent",
+  "route",
+  "is_published",
   "column_break_tfqn",
   "shop_no",
   "shop_name",
   "area",
-  "route",
-  "is_published"
+  "shop_type"
  ],
  "fields": [
   {
@@ -80,6 +81,12 @@
    "fieldname": "is_published",
    "fieldtype": "Check",
    "label": "Is Published"
+  },
+  {
+   "fieldname": "shop_type",
+   "fieldtype": "Link",
+   "label": "Shop Type",
+   "options": "Shop Type"
   }
  ],
  "grid_page_length": 50,
@@ -87,7 +94,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2025-09-30 11:12:55.125920",
+ "modified": "2025-09-30 14:29:17.454000",
  "modified_by": "Administrator",
  "module": "Airport Shop",
  "name": "Airport Shop",

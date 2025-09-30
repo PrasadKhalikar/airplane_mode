@@ -8,9 +8,12 @@ app_license = "mit"
 
 scheduler_events = {
     "monthly": [
-        "airport_shop.tasks.send_rent_reminders"
+        "airplane_mode.tasks.send_rent_reminders"
     ]
 }
+fixtures = [
+    {"dt": "Shop Type"}
+]
 
 # ------------------
 
@@ -143,13 +146,11 @@ scheduler_events = {
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Airplane Flight": {
+		"on_update": "airplane_mode.airplane_mode.doctype.airplane_flight.airplane_flight.update_ticket_gates"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
